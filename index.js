@@ -35,6 +35,11 @@ const transporter = nodemailer.createTransport({
 // In-memory store for OTPs (for demo only)
 const otps = new Map();
 
+// ping end point
+app.get('/ping', (req, res) => {
+  res.status(200).send('pong');
+});
+
 // Route: Send OTP
 app.post('/send-otp', async (req, res) => {
   const { email } = req.body;
@@ -124,3 +129,4 @@ app.post('/submit-form', async (req, res) => {
 });
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
